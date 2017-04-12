@@ -52,7 +52,6 @@ require_relative '../models/address_book'
        check_entry(entry_five, "Sussie", "555-555-2036", "sussie@blocmail.com")
      end
     end
-     
           it "initializes entries as arrays" do
        expect(book.entries).to be_an(Array)
      end
@@ -102,7 +101,39 @@ require_relative '../models/address_book'
        expect(book.entries.size).to eq(1)
        expect(book.entries.first.name).to eq('Chirag Shah')
     end  
-end
-    
+   end
+   
+   describe "#import_from_csv_2" do
+      it "imports the correct number of entries" do
+       book.import_from_csv("entries_2.csv")
+       book_size = book.entries.size
+       
+       expect(book_size).to eq 3
+      end
+      
+      it "imports the 2nd entry" do
+       book.import_from_csv("entries_2.csv")
+       # Check the second entry
+       entry_two = book.entries[0]
+       
+       check_entry(entry_two, "Bob", "555-555-5415", "bob@blocmail.com")
+     end
+     
+      it "imports the 3rd entry" do
+       book.import_from_csv("entries_2.csv")
+       # Check the third entry
+       entry_three = book.entries[1]
+       
+       check_entry(entry_three, "Joe", "555-555-3660", "joe@blocmail.com")
+     end
+
+      it "imports the 4th entry" do
+       book.import_from_csv("entries_2.csv")
+       # Check the fourth entry
+       entry_four = book.entries[2]
+       
+       check_entry(entry_four, "Sally", "555-555-4646", "sally@blocmail.com")
+     end
+     end
  end 
 end
