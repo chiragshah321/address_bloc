@@ -139,6 +139,19 @@ require_relative '../models/address_book'
      end
     end
     
+    
+    describe "#nuke_entries" do
+     it "deletes all entries" do
+     book.add_entry("Chirag Shah", "321.543.6818", "chirag@gmail.com")
+     book.add_entry("Chirag Shah", "321.543.6818", "chirag@gmail.com")
+     book.add_entry("Chirag Shah", "321.543.6818", "chirag@gmail.com")
+     
+     book.nuke
+     expect(book.entries.size).to eq 0
+    
+    end 
+   end
+   
     describe "#remove_entry" do
       it "removes entry using the name, phone_number, email address" do
        book = AddressBook.new

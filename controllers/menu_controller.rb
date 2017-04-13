@@ -15,6 +15,7 @@ require_relative '../models/address_book'
      puts "3 - Search for an entry"
      puts "4 - Import entries from a CSV"
      puts "5 - Exit"
+     puts "6 - Nuke"
      print "Enter your selection: "
  
      
@@ -40,6 +41,11 @@ require_relative '../models/address_book'
        when 5
          puts "Good-bye!"
          exit(0)
+       when 6
+        system "clear"
+        address_book.nuke
+        puts "Entries have been removed"
+        main_menu
        else
          system "clear"
          puts "Sorry, that is not a valid input"
@@ -90,9 +96,7 @@ require_relative '../models/address_book'
       puts "Not match found for #{name}"
      end
     end
- 
-    def read_csv
-    end
+    
     
     def entry_submenu(entry)
     
